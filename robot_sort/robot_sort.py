@@ -95,8 +95,29 @@ class SortingRobot:
     def sort(self):
         if len(l) < 2:
             return(l)
+        else:
+            # starts with swapping none item into first slot
+            swap_item()
+            # loop start - repeat this until return sorted list
+            if light_is_on() is False:
+                if compare_item() == -1:
+                    swap_item()
 
-        pass
+                if can_move_right():
+                    move_right()
+                elif can_move_right() 
+                else:
+                    set_light_off()
+
+            if light_is_on():
+                if compare_item() == 1:
+                    swap_item()
+
+                if can_move_left():
+                    move_left()
+                else:
+                    set_light_off()
+
 
 
 if __name__ == "__main__":
@@ -138,9 +159,17 @@ if __name__ == "__main__":
 # ### Running out of time plan ###
 # ## aka playing with mahjong tiles till it works plan ##
 # swap none imediatly so its the first item in the list
+# while light off
 # check swap
 # if -1 swap
-# check if move right
-# if true move right
-#   check swap, if -1 swap
-# else
+# check if move right and move if can
+#   if not turn light on
+# while light on
+# check swap
+# if 1 swap
+# if cant move left or check is none swap
+# move right once and swap. Turn light off and repeat
+
+# if cant move right and swap is none return list
+
+# this works if you can alternate while loops outside of creating a larger while loop
