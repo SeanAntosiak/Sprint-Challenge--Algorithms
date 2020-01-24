@@ -93,30 +93,34 @@ class SortingRobot:
         return self._light == "ON"
 
     def sort(self):
-        if len(l) < 2:
-            return(l)
-        else:
-            # starts with swapping none item into first slot
-            swap_item()
-            # loop start - repeat this until return sorted list
-            if light_is_on() is False:
-                if compare_item() == -1:
-                    swap_item()
+        # breaking the rule
+        sorting = 1
+        self.swap_item()
+        while sorting == 1:
+            while self.light_is_on() is False:
+                if self.compare_item() == -1:
+                    self.swap_item()
 
-                if can_move_right():
-                    move_right()
-                elif can_move_right() 
+                if self.can_move_right():
+                    self.move_right()
                 else:
-                    set_light_off()
+                    self.set_light_on()
 
-            if light_is_on():
-                if compare_item() == 1:
-                    swap_item()
+            while self.light_is_on():
+                if self.compare_item() == 1:
+                    self.swap_item()
 
-                if can_move_left():
-                    move_left()
-                else:
-                    set_light_off()
+                if self.can_move_left() and (self.compare_item() is not None):
+                    self.move_left()
+                elif self.compare_item() is None:
+                    self.swap_item()
+                    if self.can_move_right():
+                        self.move_right()
+                        self.swap_item()
+                        self.set_light_off()
+                    else:
+                        sorting = 0  # list is now sorted
+                        self.set_light_off()
 
 
 
