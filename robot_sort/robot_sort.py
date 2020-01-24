@@ -93,10 +93,9 @@ class SortingRobot:
         return self._light == "ON"
 
     def sort(self):
-        """
-        Sort the robot's list.
-        """
-        # Fill this out
+        if len(l) < 2:
+            return(l)
+
         pass
 
 
@@ -110,3 +109,38 @@ if __name__ == "__main__":
 
     robot.sort()
     print(robot._list)
+
+
+# ### plan ###
+# have the robot move right until check move right is false
+# pick up the item when the robot can no longer move right
+# move left and check if it is smaller, if yes swap
+# continue moving left and check/swaping for lower values until the robot cant move left
+# once the robot cant move left turn the light on
+# while light is on check values and if the held object is smaller swap else move right
+# once an item is swapped turn the light off
+#  BAD PLAN NVM
+
+# ### plan 2 ###
+# while light is off check values, if -1 swap
+# check if you can move right , if you can do so
+# if cant move right AND check != -1  swap item and turn light on
+# while light on check values if 1 swap
+# check move left, if you can do it
+# if cant move left AND check values = -1 swap and turn light off
+#
+# Problems !!
+# when to stop
+# how to deal with none object (maybe related on how to stop)
+# how to alternate between while loops without another while loop ( which would require a variable) ( could use light for this but then cant use it for choosing direction)
+
+
+# ### Running out of time plan ###
+# ## aka playing with mahjong tiles till it works plan ##
+# swap none imediatly so its the first item in the list
+# check swap
+# if -1 swap
+# check if move right
+# if true move right
+#   check swap, if -1 swap
+# else
