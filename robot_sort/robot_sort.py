@@ -93,34 +93,49 @@ class SortingRobot:
         return self._light == "ON"
 
     def sort(self):
-        # breaking the rule
-        sorting = 1
+
+
+        # starts by setting first item to none
         self.swap_item()
+
+        # breaking the rule to allow for while loops to repeat
+        sorting = 1
         while sorting == 1:
+            # runs when light is off
             while self.light_is_on() is False:
+                # takes the larger of two items
                 if self.compare_item() == -1:
                     self.swap_item()
 
+                # move right if you can or turn light on
                 if self.can_move_right():
                     self.move_right()
                 else:
                     self.set_light_on()
 
+            # while the light is on
             while self.light_is_on():
+                # takes the smaller of two items
                 if self.compare_item() == 1:
                     self.swap_item()
 
+                # move left unless the robot is at none
                 if self.can_move_left() and (self.compare_item() is not None):
                     self.move_left()
+                # if the robot is at the none item take it
                 elif self.compare_item() is None:
                     self.swap_item()
+                    # if it can move right move right and swap the none item
+                    # then swap the light again
                     if self.can_move_right():
                         self.move_right()
                         self.swap_item()
                         self.set_light_off()
+                    # if the robot cant move right and is at the none item
+                    # the list is sorted and the robot is now holding the none
                     else:
                         sorting = 0  # list is now sorted
-                        self.set_light_off()
+                        self.set_light_off()  # closes inner while loop
 
 
 
